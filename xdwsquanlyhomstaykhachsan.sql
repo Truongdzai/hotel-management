@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 02, 2025 lúc 06:38 AM
+-- Thời gian đã tạo: Th7 03, 2025 lúc 10:17 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -226,7 +226,8 @@ INSERT INTO `khach_hang` (`ma_kh`, `ho_ten`, `gioi_tinh`, `cccd`, `sdtkh`, `emai
 (7, 'Nguyễn Văn C', 'Nữ', '084302004477', '0978756676', 'vanc@gmail.com', 'Hoà Minh, Châu Thành', '123'),
 (8, 'Nguyễn Văn D ', 'Nữ', '084301000398', '0866475515', 'vand@gmail.com', '73/2 Phạm Ngũ Lão, Khóm 3 phường 2, Thành phố Trà Vinh', '123'),
 (9, 'Nguyễn Văn E', 'Nữ', '0843020004645', '0564520610', 'vane@gmail.com', 'Khóm 3 phường 5, đường D5, Thành phố Trà Vinh', '123'),
-(25, 'Nguyễn Văn F', 'Nữ', '0843020001710', '0565498884', 'vanf@gmail.com', '', '');
+(25, 'Nguyễn Văn F', 'Nữ', '0843020001710', '0565498884', 'vanf@gmail.com', '', ''),
+(27, 'test', 'Nam', '123456789101', '0000000001', 'test@gmail.com', '', '');
 
 -- --------------------------------------------------------
 
@@ -277,7 +278,8 @@ INSERT INTO `log` (`ma_log`, `ma_nv`, `hanh_dong`, `ngay`) VALUES
 (1, 4, 'Thêm thông tin phòng mới: Loại phòng 5, Tên phòng 107', '2025-07-02 11:24:39'),
 (2, 4, 'Thêm thông tin phòng mới: Loại phòng 1, Tên phòng 222', '2025-07-02 11:24:59'),
 (3, 4, 'Thêm loại phòng mới: Mã 17, Tên VIP, Diện tích 31-32m2, Chi tiết phòng 2 người lớn, giường đôi, Số lượng 1, Giá phòng 200000000', '2025-07-02 11:27:49'),
-(4, 4, 'Thêm thông tin phòng mới: Loại phòng 1, Tên phòng 107', '2025-07-02 11:38:24');
+(4, 4, 'Thêm thông tin phòng mới: Loại phòng 1, Tên phòng 107', '2025-07-02 11:38:24'),
+(5, 4, 'Thêm nhân viên mới: Mã 6, Họ tên Admin, Giới tính Nam, CCCD 123456789101, Ngày sinh 10/12/2005, SĐT 0000000001, Địa chỉ Hồ Chí Minh , Tài khoản Admin, Tình trạng Hoạt động', '2025-07-03 08:19:56');
 
 -- --------------------------------------------------------
 
@@ -308,7 +310,8 @@ INSERT INTO `nhan_vien` (`ma_nv`, `ho_ten`, `gioi_tinh`, `cccd`, `ngay_sinh`, `s
 (2, 'Nguyễn Ngọc Bảo Ngân', 'Nữ', '084302000305', '03/12/2005', '0523135960', 'Khóm 3 phường 5, D5, Thành phố Trà Vinh', 'baongan@gmail.com', '123', 0, 'Hoạt động'),
 (3, 'Trần Thị Diễm My', 'Nữ', '084302000305', '22/09/2005', '0523135960', 'Khóm 3 phường 5, D5, Thành phố Trà Vinh', 'diemmy@gmail.com', '123', 0, 'Hoạt động'),
 (4, 'Quang Văn Trường', 'Nam', '01234567890', '10/12/2005', '0867149451', 'Xã Chi Khê, Huyện Con Cuông, Tỉnh Nghệ An', 'qvantruong205@gmail.com', '123', 1, 'Hoạt động'),
-(5, 'I love V', 'Nam', '012345679876', '10/12/2005', '0817740610', 'Xã Chi Khê, Huyện Con Cuông, Tỉnh Nghệ An', 'nhanvien@gmail.com', '123', 0, 'Hoạt động');
+(5, 'I love V', 'Nam', '012345679876', '10/12/2005', '0817740610', 'Xã Chi Khê, Huyện Con Cuông, Tỉnh Nghệ An', 'nhanvien@gmail.com', '123', 0, 'Hoạt động'),
+(6, 'Admin', 'Nam', '123456789101', '10/12/2005', '0000000001', 'Hồ Chí Minh ', 'admin@gmail.com', '123', 1, 'Hoạt động');
 
 -- --------------------------------------------------------
 
@@ -371,15 +374,19 @@ CREATE TABLE `phieu_dat` (
   `so_luong_phong_dat` int(11) NOT NULL,
   `tien_coc` varchar(20) NOT NULL,
   `tong_tien` int(11) NOT NULL,
-  `trang_thai` varchar(50) NOT NULL
+  `trang_thai` varchar(50) NOT NULL,
+  `phuong_thuc_tt` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `phieu_dat`
 --
 
-INSERT INTO `phieu_dat` (`ma_phieu_dat`, `ma_kh`, `ma_loai`, `ma_nv`, `ngay_dat`, `ngay_nhan`, `ngay_tra`, `so_luong_nguoi_lon`, `so_luong_tre_em`, `so_luong_tre_em_tren_6`, `so_luong_tre_em_duoi_6`, `phu_thu_tre_em`, `so_luong_phong_dat`, `tien_coc`, `tong_tien`, `trang_thai`) VALUES
-(37, 8, 3, 1, '2025-07-06', '2025-07-12', '2025-07-20', 2, 3, 2, 1, 140000, 1, '2830000', 5660000, 'Đã xác nhận');
+INSERT INTO `phieu_dat` (`ma_phieu_dat`, `ma_kh`, `ma_loai`, `ma_nv`, `ngay_dat`, `ngay_nhan`, `ngay_tra`, `so_luong_nguoi_lon`, `so_luong_tre_em`, `so_luong_tre_em_tren_6`, `so_luong_tre_em_duoi_6`, `phu_thu_tre_em`, `so_luong_phong_dat`, `tien_coc`, `tong_tien`, `trang_thai`, `phuong_thuc_tt`) VALUES
+(37, 8, 3, 1, '2025-07-06', '2025-07-12', '2025-07-20', 2, 3, 2, 1, 140000, 1, '2830000', 5660000, 'Đã xác nhận', NULL),
+(38, 1, 1, 6, '2025-07-03', '2025-07-03', '2025-07-04', 2, 0, 0, 0, 0, 1, '295000', 590000, 'Đã xác nhận', NULL),
+(39, 27, 2, NULL, '2025-07-03', '2025-07-03', '2025-07-04', 1, 0, 0, 0, 0, 1, '295000', 590000, 'Chờ xác nhận', NULL),
+(40, 1, 3, NULL, '2025-07-03', '2025-07-04', '2025-07-04', 4, 0, 0, 0, 0, 2, '690000', 1380000, 'Chờ xác nhận', NULL);
 
 -- --------------------------------------------------------
 
@@ -485,9 +492,9 @@ CREATE TABLE `tin_tuc` (
 
 INSERT INTO `tin_tuc` (`ma_tin_tuc`, `ma_nv`, `ten_tin_tuc`, `noi_dung`, `hinh_anh`, `ngay_dang`, `trang_thai`) VALUES
 (1, 1, 'Khám phá bộ đôi cà phê phong vị Ý kết hợp sữa yến mạch', 'Cappuchino yến mạch: cảm hứng khác biệt của Trung Nguyên Legend qua từng giọt cà phê phong vị Ý mà Cappuchino mang đến, phối hợp sữa yến mạch thơm béo tự nhiên tạo nên một thức uống vừa thơm ngon dinh dưỡng, vừa hiện đại bay bổng.\r\n\r\nLatte yến mạch: với tỷ lệ sữa yến mạch nhiều hơn hoà quyện hoàn hảo cùng vị đậm đà của cà phê rang xay, Latte yến mạch là lựa chọn hoàn hảo cho một ngày tươi mới đầy thư thái và sáng tạo.', './anhtin/latte.jpg', '2025-06-28', 'Công khai'),
-(2, 2, 'Trang trí phòng tạo không gian lãng mạn', 'Tạo ra không gian lãng mạn, ấm áp là điều mà nhiều ngườimong muốn. Một không gian lãng mạn không chỉ giúp tạo ra những kỷ niệm đáng nhớ mà còn giúp tình cảm thêm phần gắn kết.\n\nChúng tôi tự hào cung cấp dịch vụ hỗ trợ khách hàng trong việc trang trí ', './anhtin/tin1.jpg', '2025-06-27', 'Công khai'),
+(2, 4, 'Trang trí phòng tạo không gian lãng mạn', '<p>\r\n	Tạo ra kh&ocirc;ng gian l&atilde;ng mạn, ấm &aacute;p l&agrave; điều m&agrave; nhiều ngườimong muốn. Một kh&ocirc;ng gian l&atilde;ng mạn kh&ocirc;ng chỉ gi&uacute;p tạo ra những kỷ niệm đ&aacute;ng nhớ m&agrave; c&ograve;n gi&uacute;p t&igrave;nh cảm th&ecirc;m phần gắn kết. Ch&uacute;ng t&ocirc;i tự h&agrave;o cung cấp dịch vụ hỗ trợ kh&aacute;ch h&agrave;ng trong việc trang tr&iacute;</p>\r\n', './anhtin/tin1.jpg', '2025-06-27', 'Công khai'),
 (3, 2, 'Bún thịt nướng', 'Bún thịt nướng là một món ăn đặc trưng của ẩm thực Việt Nam, nổi bật với hương vị đậm đà và hấp dẫn. Món ăn này gồm bún tươi mềm mại, thịt heo nướng thơm lừng, ăn kèm với rau sống tươi ngon, dưa leo, giá đỗ và đậu phộng rang giòn. Đặc biệt, nước mắm chua ngọt pha chế tinh tế là linh hồn của món bún thịt nướng, tạo nên sự hòa quyện hoàn hảo giữa các nguyên liệu, mang đến trải nghiệm ẩm thực khó quên cho thực khách.', './anhtin/food3.jpg', '2025-06-27', 'Công khai'),
-(4, 2, 'Ưu đãi đặt phòng tháng 8/2025', 'Chưa có thông tin cụ thể\r\n', './anhtin/family-twin3.jpg', '2025-06-27', 'Ẩn bài');
+(4, 3, 'Ưu đãi đặt phòng tháng 8/2025', '<p>\r\n	Chưa có th&ocirc;ng tin cụ th&ecirc;̉</p>\r\n', './anhtin/family-twin3.jpg', '2025-06-27', 'Ẩn bài');
 
 -- --------------------------------------------------------
 
@@ -667,7 +674,7 @@ ALTER TABLE `hoa_don`
 -- AUTO_INCREMENT cho bảng `khach_hang`
 --
 ALTER TABLE `khach_hang`
-  MODIFY `ma_kh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `ma_kh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT cho bảng `loai_phong`
@@ -679,13 +686,13 @@ ALTER TABLE `loai_phong`
 -- AUTO_INCREMENT cho bảng `log`
 --
 ALTER TABLE `log`
-  MODIFY `ma_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ma_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `nhan_vien`
 --
 ALTER TABLE `nhan_vien`
-  MODIFY `ma_nv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ma_nv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `o`
@@ -697,7 +704,7 @@ ALTER TABLE `o`
 -- AUTO_INCREMENT cho bảng `phieu_dat`
 --
 ALTER TABLE `phieu_dat`
-  MODIFY `ma_phieu_dat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `ma_phieu_dat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT cho bảng `phong`

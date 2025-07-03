@@ -222,19 +222,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="framecontent">
+
                 <div class="frcontent">
-                    <span>Thông tin chuyển khoản</span>
-                    <p><a style="color:#b20600;">**</a>Quý khách vui lòng<a style="color:#b20600;">chuyển khoản
+                    <span>Dịch vụ bổ sung</span>
+                    <p><a style="color:#b20600;">**</a>Quý khách có thể<a style="color:#b20600;">chuyển khoản
                             đặt cọc phòng trước khi bấm đặt phòng</a>để được xác nhận phòng nhanh chóng.
                     </p>
                     <p><a style="color:#b20600;">**</a>Nội dung chuyển khoản: HỌ TÊN - LOẠI PHÒNG ĐÃ ĐẶT.</p>
                     <label class="imgQR">
                         <img class="imgqr" src="anhtin/maqr.jpg" />
                     </label>
+                 <span>Phương thức thanh toán</span>
+                   <div class="payment-methods">
+                        <label><input type="radio" name="phuong_thuc_tt" value="Tien mat" checked> Tiền mặt
+                    <img src="anhtin/icon_tienmat.png" alt="Tiền mặt"></label>
+                        <label><input type="radio" name="phuong_thuc_tt" value="Momo"> Momo
+                    <img src="anhtin/icon_momo.png" alt="Momo"></label>
+                        <label><input type="radio" name="phuong_thuc_tt" value="The"> Thẻ (Card)
+                    <img src="anhtin/icon_card.png" alt="Thẻ"></label>
+                    </div>
+            
 
                 </div>
-
+   
             </div>
+            
             <button type="button" class="btdatphongg" onclick="showConfirmationPopup()">ĐẶT PHÒNG</button>
         </div>
         <div id="confirmationPopup" class="popup">
@@ -250,8 +262,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
         <div class="phone-button">
-            <a href="tel:+0903345615">
-                <i class="fa-solid fa-phone"></i>0903 345 615
+            <a href="tel:+0000000001">
+                <i class="fa-solid fa-phone"></i>0000000001
             </a>
         </div>
         <button onclick="topFunction()" id="scrollToTopBtn" title="Go to top">
@@ -293,6 +305,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         let cccd = document.querySelector('input[name="cccd"]').value;
         let sdtkh = document.querySelector('input[name="sdtkh"]').value;
         let emailkh = document.querySelector('input[name="emailkh"]').value;
+      
 
         if (tongTien === '0' || soLuongNguoiLon === '0' || soLuongPhong === '0' || hoTen.trim() === '' || gioiTinh === '' || cccd.trim() === '' || sdtkh.trim() === '' || emailkh.trim() === '') {
             Swal.fire({
@@ -439,6 +452,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 </script>
+<style>
+.payment-methods {
+    padding-left: 480px;
+}
+
+.payment-methods label {
+    display: block;
+    margin-bottom: 5px; 
+}
+.payment-methods img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    margin-left: 10px;
+}
+</style>
 <?php
 include ("footertc.php")
     ?>
