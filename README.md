@@ -1,0 +1,6 @@
+"# Qu?n ly Kh ch S?n" 
+"D?  n m“n Phƒn t¡ch Thi?t k? H? th?ng - CCQ2311D" 
+"- Tˆn nh¢m: Nh¢m 1" 
+"- Th…nh viˆn: Tru?ng, Ngƒn, Long, My" 
+"- Hu?ng d?n ch?y: XAMPP + import SQL" 
+"# hotel-management" 
