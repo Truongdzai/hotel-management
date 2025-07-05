@@ -1,0 +1,6 @@
+"# Quan ly Khach San" 
+"Đồ án môn phân tích thiết kế hệ thống - CCQ2311D" 
+"- Tên nhóm :Nhóm 1" 
+"- Thành viênn: Trường, Ngân, Long, My" 
+"- Hướng dẫnn chạy: XAMPP + import SQL" 
+"# hotel-management" 
